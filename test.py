@@ -1,7 +1,6 @@
 __author__ = 'adrian'
 
 import unittest
-import os.path
 import os
 from scipy import misc
 import colourfinder
@@ -23,6 +22,9 @@ class ColourFinderTest(unittest.TestCase):
     def assertColourNotFound(self, filename, colour):
         (x, y, confidence) = self.recogniseImage(filename, colour)
         self.assertLess(0.3, confidence)
+
+    def test_find_wattle(self):
+        self.assertImageAsExpected("chicken.jpg", colourfinder.RED, 1850, 1320, 0.5)
 
 if __name__ == "__main__":
     unittest.main()
